@@ -1,6 +1,6 @@
 import { ArrowRight, Building2, CheckCircle2, ClipboardCheck, Sparkles } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import heroVisual from '../assets/hero.png'
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo-regulus.svg'
 import SectionReveal from './SectionReveal'
 
@@ -13,21 +13,30 @@ const heroContent: Record<
     description: string
     points: string[]
     stat: string
+    ctaLabel: string
+    ctaTo: string
+    visualLabel: string
   }
 > = {
   temizlik: {
-    title: 'Kurumsal Temizlikte Surecli ve Yuksek Standartli Hizmet',
+    title: 'Temizlikte surekli kalite ve premium operasyon standardi',
     description:
-      'Banka, hastane, ofis ve tum kurumsal alanlarda planli operasyon, denetlenebilir surec ve profesyonel ekip destegi sunuyoruz.',
+      'Kurumsal ve bireysel alanlarda planli ekip yonetimi, kontrol listeleri ve raporlanabilir sureclerle hijyen standardinizi koruyoruz.',
     points: ['Gunluk / periyodik operasyon plani', 'Raporlanabilir saha yonetimi', 'Kuruma ozel hijyen standardi'],
     stat: 'Kurumsal temizlik odagi',
+    ctaLabel: 'Temizlik Hizmetlerini Gor',
+    ctaTo: '/temizlik-hizmetleri',
+    visualLabel: 'Temizlik Hizmetleri',
   },
   insaat: {
-    title: 'Insaat ve Proje Yonetiminde Uctan Uca Kontrol',
+    title: 'Insaat projelerinde uctan uca kontrol ve net ilerleme',
     description:
-      'Tasarimdan teslime kadar zaman, maliyet ve kaliteyi birlikte yoneten profesyonel proje koordinasyonu ile sureci guvence altina aliyoruz.',
+      'Planlama, saha koordinasyonu, kalite denetimi ve maliyet kontrolunu tek merkezden yoneterek projenizi guvenli sekilde tamamlatiyoruz.',
     points: ['Ihale ve sozlesme takibi', 'Zaman-maliyet performans yonetimi', 'Risk ve kalite guvence sureci'],
     stat: 'Insaat yonetimi odagi',
+    ctaLabel: 'Insaat Hizmetlerini Gor',
+    ctaTo: '/insaat-hizmetleri',
+    visualLabel: 'Insaat Hizmetleri',
   },
 }
 
@@ -36,90 +45,108 @@ function Hero() {
   const current = useMemo(() => heroContent[activeTab], [activeTab])
 
   return (
-    <SectionReveal id="ana-sayfa" className="mx-auto max-w-7xl px-4 pb-24 pt-14 sm:px-6 lg:px-8">
-      <div className="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-[0_24px_60px_rgba(15,23,42,0.08)] sm:p-14">
-        <img src={logo} alt="Regulus logo" className="mb-9 h-16 w-auto rounded-lg border border-slate-100 bg-white px-2 py-1" />
-        <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-600">
-          <ClipboardCheck size={16} className="text-navy" />
-          Kurumsal standartlarda izlenebilir hizmet
-        </p>
-        <h1 className="max-w-4xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">
-          Kurumsal Temizlik ve Insaatta Profesyonel Cozumler
-        </h1>
-
-        <div className="mt-8 inline-flex rounded-xl border border-slate-200 bg-slate-50 p-1">
-          <button
-            type="button"
-            onClick={() => setActiveTab('temizlik')}
-            className={`rounded-lg px-5 py-2 text-sm font-semibold transition ${
-              activeTab === 'temizlik' ? 'bg-navy text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Temizlik
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab('insaat')}
-            className={`rounded-lg px-5 py-2 text-sm font-semibold transition ${
-              activeTab === 'insaat' ? 'bg-navy text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            Insaat
-          </button>
+    <SectionReveal id="ana-sayfa" className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8">
+      <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+        <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-5 sm:p-7">
+          <img src={logo} alt="Regulus logo" className="mb-5 h-14 w-auto rounded-lg border border-slate-100 bg-white px-2 py-1" />
+          <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 sm:text-sm">
+            <ClipboardCheck size={15} className="text-navy" />
+            Premium operasyon - mobil ve kurumsal odakli hizmet deneyimi
+          </p>
+          <h1 className="mt-5 max-w-4xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">
+            Temizlik ve Insaat hizmetlerinde ilk bakista net yonlendirme
+          </h1>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            Musterilerinizin ilk gordugu alan olarak Hero bolumunu, hizmete hizli erisim ve guven veren premium bir
+            gorunumle karsiliyoruz.
+          </p>
         </div>
 
-        <div className="mt-7 grid items-stretch gap-6 lg:grid-cols-2">
-          <article className="rounded-2xl border border-slate-200 bg-white p-6">
-            <p className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
-              <Sparkles size={14} className="text-gold" />
-              {current.stat}
-            </p>
-            <h2 className="mt-4 text-2xl font-semibold text-slate-900 sm:text-3xl">{current.title}</h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">{current.description}</p>
-            <ul className="mt-5 space-y-2">
-              {current.points.map((point) => (
-                <li key={point} className="flex items-center gap-2 text-sm text-slate-700">
-                  <CheckCircle2 size={16} className="text-navy" />
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </article>
+        <div className="p-5 sm:p-7">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500 sm:text-sm">
+            Hizmet Alani Secin
+          </p>
+          <div className="grid grid-cols-2 gap-3 rounded-2xl bg-slate-50 p-2 sm:max-w-md">
+            <button
+              type="button"
+              onClick={() => setActiveTab('temizlik')}
+              className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition sm:text-base ${
+                activeTab === 'temizlik'
+                  ? 'bg-navy text-white shadow-[0_8px_24px_rgba(30,58,95,0.28)]'
+                  : 'text-slate-700 hover:bg-white'
+              }`}
+            >
+              <Sparkles size={18} />
+              Temizlik
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('insaat')}
+              className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition sm:text-base ${
+                activeTab === 'insaat'
+                  ? 'bg-navy text-white shadow-[0_8px_24px_rgba(30,58,95,0.28)]'
+                  : 'text-slate-700 hover:bg-white'
+              }`}
+            >
+              <Building2 size={18} />
+              Insaat
+            </button>
+          </div>
 
-          <article className="relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-900 to-navy p-6 text-white">
-            <img
-              src={heroVisual}
-              alt={activeTab === 'temizlik' ? 'Temizlik hizmeti gorseli' : 'Insaat hizmeti gorseli'}
-              className="h-full w-full rounded-xl object-cover opacity-45"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/80 via-navy/50 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-              <p className="text-sm text-slate-100">
-                {activeTab === 'temizlik'
-                  ? 'Temizlik operasyonlarinda sureklilik, denetim ve hijyen odakli yaklasim.'
-                  : 'Insaat yonetiminde zaman, maliyet ve kaliteyi es zamanli kontrol eden planlama.'}
+          <div className="mt-6 grid items-stretch gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7">
+              <p className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                <Sparkles size={14} className="text-gold" />
+                {current.stat}
               </p>
-            </div>
-            <div className="absolute right-5 top-5 rounded-full bg-white/15 p-3 text-gold">
-              {activeTab === 'temizlik' ? <Sparkles size={20} /> : <Building2 size={20} />}
-            </div>
-          </article>
-        </div>
+              <h2 className="mt-4 text-2xl font-semibold text-slate-900 sm:text-3xl">{current.title}</h2>
+              <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">{current.description}</p>
+              <ul className="mt-5 space-y-2.5">
+                {current.points.map((point) => (
+                  <li key={point} className="flex items-start gap-2.5 text-sm text-slate-700 sm:text-base">
+                    <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-navy" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
 
-        <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="#iletisim"
-            className="inline-flex items-center gap-2 rounded-xl bg-navy px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#254a73]"
-          >
-            Teklif Al
-            <ArrowRight size={18} />
-          </a>
-          <a
-            href="#hizmetler"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
-          >
-            Hizmetleri Incele
-          </a>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  to={current.ctaTo}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#254a73]"
+                >
+                  {current.ctaLabel}
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/iletisim"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
+                >
+                  Hemen Iletisime Gec
+                </Link>
+              </div>
+            </article>
+
+            <article className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 p-5 text-white sm:p-7">
+              <div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-gold/20 blur-2xl" />
+              <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-navy/50 blur-3xl" />
+              <div className="relative z-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-300">One Cikan Hizmet</p>
+                <p className="mt-3 text-3xl font-semibold sm:text-4xl">{current.visualLabel}</p>
+                <div className="mt-6 grid gap-3 text-sm sm:text-base">
+                  <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                    Mobilde tek dokunusla ilgili hizmet sayfasina yonlendirme
+                  </div>
+                  <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                    Webde net hiyerarsi ve premium marka algisi
+                  </div>
+                  <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                    Donusume odakli CTA yapisi ile daha hizli teklif toplama
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </SectionReveal>

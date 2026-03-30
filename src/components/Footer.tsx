@@ -1,12 +1,13 @@
 import { Globe, Mail, PhoneCall } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/logo-regulus.svg'
 
 const links = [
-  { label: 'Ana Sayfa', href: '#ana-sayfa' },
-  { label: 'Hizmetler', href: '#hizmetler' },
-  { label: 'Insaat', href: '#insaat' },
-  { label: 'Hakkimizda', href: '#hakkimizda' },
-  { label: 'Iletisim', href: '#iletisim' },
+  { label: 'Anasayfa', to: '/' },
+  { label: 'Temizlik Hizmetleri', to: '/temizlik-hizmetleri' },
+  { label: 'Insaat Hizmetleri', to: '/insaat-hizmetleri' },
+  { label: 'Hakkimizda', to: '/hakkimizda' },
+  { label: 'Iletisim', to: '/iletisim' },
 ]
 
 function Footer() {
@@ -14,7 +15,9 @@ function Footer() {
     <footer className="border-t border-slate-200 bg-white py-14">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
-          <img src={logo} alt="Regulus logo" className="h-14 w-auto" />
+          <Link to="/">
+            <img src={logo} alt="Regulus logo" className="h-14 w-auto" />
+          </Link>
           <p className="mt-4 max-w-sm text-sm text-slate-600">
             Regulus Temizlik &amp; Insaat, kurumsal ve bireysel hizmetlerde premium kalite ve guvenilir operasyon
             anlayisini bir araya getirir.
@@ -25,10 +28,10 @@ function Footer() {
           <h3 className="text-lg font-semibold text-slate-900">Menu</h3>
           <ul className="mt-4 space-y-2 text-sm text-slate-600">
             {links.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="transition-colors hover:text-navy">
+              <li key={link.to}>
+                <NavLink to={link.to} className="transition-colors hover:text-navy">
                   {link.label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>

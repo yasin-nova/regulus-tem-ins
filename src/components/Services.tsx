@@ -1,4 +1,5 @@
 import { Building2, Home, Sparkles } from 'lucide-react'
+import { useState } from 'react'
 import SectionReveal from './SectionReveal'
 
 type ServiceItem = {
@@ -46,6 +47,9 @@ function ServiceCard({ item }: { item: ServiceItem }) {
 }
 
 function Services() {
+  const [showAllB2B, setShowAllB2B] = useState(false)
+  const [showAllB2C, setShowAllB2C] = useState(false)
+
   return (
     <SectionReveal id="hizmetler" className="py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -56,10 +60,23 @@ function Services() {
           <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Kurumsal Cozumler</h2>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {b2bServices.map((item) => (
-            <ServiceCard key={item.title} item={item} />
+          {b2bServices.map((item, index) => (
+            <div key={item.title} className={index >= 3 && !showAllB2B ? 'hidden sm:block' : ''}>
+              <ServiceCard item={item} />
+            </div>
           ))}
         </div>
+        {b2bServices.length > 3 && (
+          <div className="mt-5 sm:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAllB2B((prev) => !prev)}
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+            >
+              {showAllB2B ? 'Daha Az Goster' : 'Devamini Gor'}
+            </button>
+          </div>
+        )}
 
         <div className="mb-11 mt-24">
           <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600">
@@ -68,10 +85,23 @@ function Services() {
           <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Yasam Alanlari Hizmetleri</h2>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {b2cServices.map((item) => (
-            <ServiceCard key={item.title} item={item} />
+          {b2cServices.map((item, index) => (
+            <div key={item.title} className={index >= 3 && !showAllB2C ? 'hidden sm:block' : ''}>
+              <ServiceCard item={item} />
+            </div>
           ))}
         </div>
+        {b2cServices.length > 3 && (
+          <div className="mt-5 sm:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAllB2C((prev) => !prev)}
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+            >
+              {showAllB2C ? 'Daha Az Goster' : 'Devamini Gor'}
+            </button>
+          </div>
+        )}
       </div>
       <div className="mx-auto mt-14 flex max-w-7xl items-center gap-2 px-4 text-sm font-medium text-slate-500 sm:px-6 lg:px-8">
         <Sparkles size={16} className="text-gold" />

@@ -1,4 +1,5 @@
 import { BadgeCheck, ClipboardList, HardHat, ShieldCheck, Timer } from 'lucide-react'
+import { useState } from 'react'
 import SectionReveal from './SectionReveal'
 
 const constructionItems = [
@@ -10,6 +11,8 @@ const constructionItems = [
 ]
 
 function Construction() {
+  const [showAllConstruction, setShowAllConstruction] = useState(false)
+
   return (
     <SectionReveal id="insaat" className="py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -19,12 +22,14 @@ function Construction() {
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {constructionItems.map((item) => {
+          {constructionItems.map((item, index) => {
             const Icon = item.icon
             return (
               <article
                 key={item.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)]"
+                className={`rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)] ${
+                  index >= 3 && !showAllConstruction ? 'hidden sm:block' : ''
+                }`}
               >
                 <div className="mb-4 inline-flex rounded-xl bg-slate-100 p-3 text-navy">
                   <Icon size={20} />
@@ -34,6 +39,17 @@ function Construction() {
             )
           })}
         </div>
+        {constructionItems.length > 3 && (
+          <div className="mt-5 sm:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAllConstruction((prev) => !prev)}
+              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+            >
+              {showAllConstruction ? 'Daha Az Goster' : 'Devamini Gor'}
+            </button>
+          </div>
+        )}
       </div>
     </SectionReveal>
   )

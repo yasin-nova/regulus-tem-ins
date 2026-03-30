@@ -1,13 +1,14 @@
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-regulus.svg'
 
 const menuItems = [
-  { label: 'Ana Sayfa', href: '#ana-sayfa' },
-  { label: 'Hizmetler', href: '#hizmetler' },
-  { label: 'Insaat', href: '#insaat' },
-  { label: 'Hakkimizda', href: '#hakkimizda' },
-  { label: 'Iletisim', href: '#iletisim' },
+  { label: 'Anasayfa', to: '/' },
+  { label: 'Temizlik Hizmetleri', to: '/temizlik-hizmetleri' },
+  { label: 'Insaat Hizmetleri', to: '/insaat-hizmetleri' },
+  { label: 'Hakkimizda', to: '/hakkimizda' },
+  { label: 'Iletisim', to: '/iletisim' },
 ]
 
 function Navbar() {
@@ -16,9 +17,9 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#ana-sayfa" className="shrink-0">
+        <NavLink to="/" className="shrink-0" onClick={() => setIsOpen(false)}>
           <img src={logo} alt="Regulus Temizlik ve Insaat logosu" className="h-12 w-auto" />
-        </a>
+        </NavLink>
 
         <button
           type="button"
@@ -31,10 +32,15 @@ function Navbar() {
 
         <ul className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
           {menuItems.map((item) => (
-            <li key={item.href}>
-              <a href={item.href} className="transition-colors duration-200 hover:text-navy">
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                className={({ isActive }) =>
+                  `transition-colors duration-200 hover:text-navy ${isActive ? 'text-navy' : ''}`
+                }
+              >
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -43,14 +49,14 @@ function Navbar() {
       {isOpen && (
         <ul className="space-y-2 border-t border-slate-100 px-4 py-3 text-sm font-medium text-slate-700 md:hidden">
           {menuItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
                 className="block rounded-lg px-3 py-2 transition hover:bg-slate-50"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
