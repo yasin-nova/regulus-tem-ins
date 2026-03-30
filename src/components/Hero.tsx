@@ -16,6 +16,7 @@ const heroContent: Record<
     ctaLabel: string
     ctaTo: string
     visualLabel: string
+    visualImage: string
   }
 > = {
   temizlik: {
@@ -27,6 +28,8 @@ const heroContent: Record<
     ctaLabel: 'Temizlik Hizmetlerini Gor',
     ctaTo: '/temizlik-hizmetleri',
     visualLabel: 'Temizlik Hizmetleri',
+    visualImage:
+      'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80',
   },
   insaat: {
     title: 'Insaat projelerinde uctan uca kontrol ve net ilerleme',
@@ -37,16 +40,93 @@ const heroContent: Record<
     ctaLabel: 'Insaat Hizmetlerini Gor',
     ctaTo: '/insaat-hizmetleri',
     visualLabel: 'Insaat Hizmetleri',
+    visualImage:
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
   },
 }
 
 function Hero() {
   const [activeTab, setActiveTab] = useState<HeroTab>('temizlik')
+  const [fullName, setFullName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [serviceType, setServiceType] = useState('Banka Temizligi')
   const current = useMemo(() => heroContent[activeTab], [activeTab])
+  const isNameValid = fullName.trim().length > 1
+  const serviceOptions = [
+    'Banka Temizligi',
+    'Belediye Temizligi',
+    'Okul ve Egitim Kurumu Temizligi',
+    'Hastane ve Saglik Kurumu Temizligi',
+    'Ofis Temizligi',
+    'AVM ve Magaza Temizligi',
+    'Fabrika ve Sanayi Temizligi',
+    'Insaat Sonrasi Temizlik',
+    'Oteller ve Konaklama Temizligi',
+    'Restoran ve Kafe Temizligi',
+    'Yat Temizligi',
+    'Ev / Hane Temizligi',
+    'Daire Temizligi',
+    'Apartman Temizligi',
+    'Villa Temizligi',
+    'Proje ve Tasarim Yonetimi',
+    'Ihale ve Sozlesme Yonetimi',
+    'Zaman ve Maliyet Kontrolu',
+    'Yapim (Insaat) Yonetimi',
+    'Risk ve Kalite Yonetimi',
+  ]
+  const whatsappText = `Merhaba, ben ${fullName || 'ismini belirtmeyen bir musteri'}. ${
+    phone ? `Telefon numaram: ${phone}. ` : ''
+  }${serviceType} hizmeti ile alakali bilgi almak istiyorum.`
+  const whatsappUrl = `https://wa.me/905355271254?text=${encodeURIComponent(whatsappText)}`
 
   return (
     <SectionReveal id="ana-sayfa" className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8">
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
+        <div className="border-b border-slate-100 bg-slate-900 p-4 sm:p-5">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-300">Hizli Iletisim</p>
+          <div className="grid gap-3 md:grid-cols-[1fr_1fr_1.2fr_auto]">
+            <input
+              type="text"
+              value={fullName}
+              onChange={(event) => setFullName(event.target.value)}
+              placeholder="Ad Soyad"
+              className="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300/80 outline-none transition focus:border-gold/60"
+            />
+            <input
+              type="tel"
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+              placeholder="Telefon"
+              className="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300/80 outline-none transition focus:border-gold/60"
+            />
+            <select
+              value={serviceType}
+              onChange={(event) => setServiceType(event.target.value)}
+              className="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white outline-none transition focus:border-gold/60"
+            >
+              {serviceOptions.map((option) => (
+                <option key={option} value={option} className="text-slate-900">
+                  {option}
+                </option>
+              ))}
+            </select>
+            <a
+              href={isNameValid ? whatsappUrl : undefined}
+              target="_blank"
+              rel="noreferrer"
+              aria-disabled={!isNameValid}
+              className={`inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-colors ${
+                isNameValid
+                  ? 'bg-gold text-slate-900 hover:bg-[#f7cf63]'
+                  : 'cursor-not-allowed bg-slate-300 text-slate-600'
+              }`}
+            >
+              Iletisime Gec
+            </a>
+          </div>
+          {!isNameValid && <p className="mt-2 text-xs text-red-200">Lutfen devam etmek icin Ad Soyad giriniz.</p>}
+        </div>
+
         <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-5 sm:p-7">
           <img src={logo} alt="Regulus logo" className="mb-5 h-14 w-auto rounded-lg border border-slate-100 bg-white px-2 py-1" />
           <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 sm:text-sm">
@@ -122,12 +202,14 @@ function Hero() {
                   to="/iletisim"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
                 >
-                  Hemen Iletisime Gec
+                  Iletisim Sayfasi
                 </Link>
               </div>
             </article>
 
             <article className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 p-5 text-white sm:p-7">
+              <img src={current.visualImage} alt={current.visualLabel} className="absolute inset-0 h-full w-full object-cover opacity-35" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/85 via-navy/70 to-slate-900/55" />
               <div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-gold/20 blur-2xl" />
               <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-navy/50 blur-3xl" />
               <div className="relative z-10">

@@ -59,6 +59,19 @@ function Services() {
           </p>
           <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Kurumsal Cozumler</h2>
         </div>
+        <div className="mb-7 overflow-hidden rounded-2xl border border-slate-200">
+          <div className="relative h-44 sm:h-52">
+            <img
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80"
+              alt="Kurumsal temizlik hizmetleri"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/45 to-transparent" />
+            <p className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-3 py-2 text-xs font-semibold text-slate-800 sm:text-sm">
+              Kurumsal alanlarda guvenilir ve denetlenebilir temizlik
+            </p>
+          </div>
+        </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {b2bServices.map((item, index) => (
             <div key={item.title} className={index >= 3 && !showAllB2B ? 'hidden sm:block' : ''}>
@@ -83,6 +96,19 @@ function Services() {
             <Home size={16} /> Bireysel / Ev ve Konut Temizligi (B2C)
           </p>
           <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Yasam Alanlari Hizmetleri</h2>
+        </div>
+        <div className="mb-7 overflow-hidden rounded-2xl border border-slate-200">
+          <div className="relative h-44 sm:h-52">
+            <img
+              src="https://images.unsplash.com/photo-1520038410233-7141be7e6f97?auto=format&fit=crop&w=1400&q=80"
+              alt="Yasam alani temizlik hizmetleri"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/45 to-transparent" />
+            <p className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-3 py-2 text-xs font-semibold text-slate-800 sm:text-sm">
+              Ev ve konutlar icin detayli, planli ve premium hizmet
+            </p>
+          </div>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {b2cServices.map((item, index) => (

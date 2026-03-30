@@ -16,10 +16,22 @@ function Construction() {
   return (
     <SectionReveal id="insaat" className="py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Insaat ve Proje Yonetimi Hizmetleri</h2>
-        <p className="mt-6 max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 text-slate-600">
-          Projeleri bastan sona yoneten, isveren adina tum surecleri kontrol eden profesyonel cozum ortagi.
-        </p>
+        <div className="grid items-center gap-5 lg:grid-cols-[1fr_0.9fr]">
+          <div>
+            <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Insaat ve Proje Yonetimi Hizmetleri</h2>
+            <p className="mt-6 max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 text-slate-600">
+              Projeleri bastan sona yoneten, isveren adina tum surecleri kontrol eden profesyonel cozum ortagi.
+            </p>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-slate-200">
+            <img
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+              alt="Insaat saha yonetimi"
+              className="h-48 w-full object-cover sm:h-56"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/70 via-slate-900/35 to-transparent" />
+          </div>
+        </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {constructionItems.map((item, index) => {
