@@ -59,11 +59,11 @@ function Contact() {
             <div className="mt-8 space-y-5 text-sm">
               <p className="flex items-start gap-3 text-slate-600">
                 <MapPin size={18} className="mt-0.5 text-navy" />
-                Istanbul, Turkiye
+                Izmir, Turkiye
               </p>
               <p className="flex items-start gap-3 text-slate-600">
                 <Phone size={18} className="mt-0.5 text-navy" />
-                +90 (212) 000 00 00
+                05355271254
               </p>
               <p className="flex items-start gap-3 text-slate-600">
                 <Mail size={18} className="mt-0.5 text-navy" />

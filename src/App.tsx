@@ -2,6 +2,7 @@ import About from './components/About'
 import Construction from './components/Construction'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import FloatingActions from './components/FloatingActions'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Services from './components/Services'
@@ -20,6 +21,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <FloatingActions />
     </div>
   )
 }
