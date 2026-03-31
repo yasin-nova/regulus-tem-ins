@@ -1,6 +1,7 @@
 import { BadgeCheck, ClipboardList, HardHat, ShieldCheck, Timer } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SectionReveal from './SectionReveal'
 
 const constructionItems = [
@@ -27,7 +28,8 @@ function Construction() {
           <div>
             <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Insaat ve Proje Yonetimi Hizmetleri</h2>
             <p className="mt-6 max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 text-slate-600">
-              Projeleri bastan sona yoneten, isveren adina tum surecleri kontrol eden profesyonel cozum ortagi.
+              Izmir ve cevresinde konut, ticari ve kurumsal projelerde planlama, koordinasyon ve uygulama sureclerini
+              isveren adina profesyonel olarak yonetiyoruz.
             </p>
           </div>
           <div className="relative overflow-hidden rounded-2xl border border-slate-200">
@@ -73,6 +75,14 @@ function Construction() {
             </button>
           </div>
         )}
+        <div className="mt-8">
+          <Link
+            to="/insaat-hizmetleri"
+            className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+          >
+            Tum Insaat Hizmetlerini Incele
+          </Link>
+        </div>
       </div>
     </SectionReveal>
   )

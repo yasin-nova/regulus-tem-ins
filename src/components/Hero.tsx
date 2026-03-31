@@ -21,11 +21,11 @@ const heroContent: Record<
   }
 > = {
   temizlik: {
-    title: 'Temizlikte surekli kalite ve premium operasyon standardi',
+    title: 'Izmir profesyonel temizlik hizmetlerinde guvenilir cozum ortagi',
     description:
-      'Kurumsal ve bireysel alanlarda planli ekip yonetimi, kontrol listeleri ve raporlanabilir sureclerle hijyen standardinizi koruyoruz.',
-    points: ['Gunluk / periyodik operasyon plani', 'Raporlanabilir saha yonetimi', 'Kuruma ozel hijyen standardi'],
-    stat: 'Kurumsal temizlik odagi',
+      'Ofis, hastane, okul, site ve yasam alanlari icin ihtiyaca ozel temizlik planlari hazirliyor; hijyen, duzen ve sureklilik odakli hizmet sunuyoruz.',
+    points: ['Kuruma ve mekana ozel operasyon plani', 'Egitimli ekip ve kalite kontrol sureci', 'Periyodik, gunluk ve detayli temizlik secenekleri'],
+    stat: 'Izmir temizlik firmasi',
     ctaLabel: 'Temizlik Hizmetlerini Gor',
     ctaTo: '/temizlik-hizmetleri',
     visualLabel: 'Temizlik Hizmetleri',
@@ -33,11 +33,11 @@ const heroContent: Record<
       'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80',
   },
   insaat: {
-    title: 'Insaat projelerinde uctan uca kontrol ve net ilerleme',
+    title: 'Insaat ve proje yonetiminde zamaninda, kontrollu ve kaliteli teslim',
     description:
-      'Planlama, saha koordinasyonu, kalite denetimi ve maliyet kontrolunu tek merkezden yoneterek projenizi guvenli sekilde tamamlatiyoruz.',
-    points: ['Ihale ve sozlesme takibi', 'Zaman-maliyet performans yonetimi', 'Risk ve kalite guvence sureci'],
-    stat: 'Insaat yonetimi odagi',
+      'Konut, ticari ve kurumsal projelerde planlama, saha yonetimi ve kalite denetimini bir arada yurutarak sureci basindan sonuna kadar takip ediyoruz.',
+    points: ['Proje planlama ve uygulama koordinasyonu', 'Maliyet, zaman ve is programi takibi', 'Risk, kalite ve is guvenligi odakli yonetim'],
+    stat: 'Insaat proje yonetimi',
     ctaLabel: 'Insaat Hizmetlerini Gor',
     ctaTo: '/insaat-hizmetleri',
     visualLabel: 'Insaat Hizmetleri',
@@ -140,14 +140,14 @@ function Hero() {
           <img src={logo} alt="Regulus logo" className="mb-5 h-14 w-auto rounded-lg border border-slate-100 bg-white px-2 py-1" />
           <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 sm:text-sm">
             <ClipboardCheck size={15} className="text-navy" />
-            Premium operasyon - mobil ve kurumsal odakli hizmet deneyimi
+            Izmir temizlik ve insaat hizmetlerinde uzman ekip
           </p>
           <h1 className="mt-5 max-w-4xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">
-            Temizlik ve Insaat hizmetlerinde ilk bakista net yonlendirme
+            Regulus Temizlik ve Insaat ile ihtiyaciniza uygun profesyonel hizmet
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-            Musterilerinizin ilk gordugu alan olarak Hero bolumunu, hizmete hizli erisim ve guven veren premium bir
-            gorunumle karsiliyoruz.
+            Kurumsal ve bireysel tum hizmet taleplerinizde, hizli kesif, net fiyatlandirma ve duzenli operasyon
+            anlayisiyla yaninizdayiz.
           </p>
         </div>
 
@@ -243,13 +243,13 @@ function Hero() {
                 <p className="mt-3 text-3xl font-semibold sm:text-4xl">{current.visualLabel}</p>
                 <div className="mt-6 grid gap-3 text-sm sm:text-base">
                   <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    Mobilde tek dokunusla ilgili hizmet sayfasina yonlendirme
+                    Hizli kesif ve teklif sureci ile ihtiyaca ozel planlama
                   </div>
                   <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    Webde net hiyerarsi ve premium marka algisi
+                    Egitimli ekipler ve duzenli saha denetimi ile yuksek hizmet kalitesi
                   </div>
                   <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    Donusume odakli CTA yapisi ile daha hizli teklif toplama
+                    Kurumsal ve bireysel projelerde zamaninda ve guvenilir teslim
                   </div>
                 </div>
               </div>

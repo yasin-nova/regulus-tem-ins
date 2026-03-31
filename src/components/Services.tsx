@@ -1,33 +1,35 @@
 import { Building2, Home, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SectionReveal from './SectionReveal'
 
 type ServiceItem = {
   title: string
   description: string
   buttonLabel?: string
+  to?: string
 }
 
 const b2bServices: ServiceItem[] = [
-  { title: 'Banka Temizligi', description: 'Sube ve merkezlerde guvenlik odakli, duzenli ve detayli temizlik.', buttonLabel: 'Detay' },
-  { title: 'Belediye Temizligi', description: 'Kamu binalarinda surecli ve planli hijyen yonetimi.', buttonLabel: 'Detay' },
-  { title: 'Okul ve Egitim Kurumu Temizligi', description: 'Siniflar, idari alanlar ve ortak kullanim noktalarinda hijyen standardi.', buttonLabel: 'Detay' },
-  { title: 'Hastane ve Saglik Kurumu Temizligi', description: 'Saglik mevzuatina uygun, disiplinli ve sterilizasyon destekli temizlik.', buttonLabel: 'Detay' },
-  { title: 'Ofis Temizligi', description: 'Verimli calisma alanlari icin gunluk ve periyodik ofis bakimi.', buttonLabel: 'Detay' },
-  { title: 'AVM ve Magaza Temizligi', description: 'Musteri deneyimini guclendiren vitrin ve ortak alan temizligi.', buttonLabel: 'Detay' },
-  { title: 'Fabrika ve Sanayi Temizligi', description: 'Uretim alanlarina uygun ekipmanlarla derinlemesine endustriyel temizlik.', buttonLabel: 'Detay' },
-  { title: 'Insaat Sonrasi Temizlik', description: 'Teslim oncesi detayli kaba ve ince temizlik sureclerinin yonetimi.', buttonLabel: 'Detay' },
-  { title: 'Oteller ve Konaklama Temizligi', description: 'Misafir memnuniyeti odakli oda, lobi ve ortak alan hizmetleri.', buttonLabel: 'Detay' },
-  { title: 'Restoran ve Kafe Temizligi', description: 'Servis ve mutfak alanlarinda hijyen ve denetim odakli calisma.', buttonLabel: 'Detay' },
-  { title: 'Yat Temizligi', description: 'Yat ve marina alanlarinda premium detay temizlik hizmeti.' },
+  { title: 'Banka Temizligi', description: 'Sube ve merkezlerde guvenlik odakli, duzenli ve detayli temizlik.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Belediye Temizligi', description: 'Kamu binalarinda surecli ve planli hijyen yonetimi.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Okul ve Egitim Kurumu Temizligi', description: 'Siniflar, idari alanlar ve ortak kullanim noktalarinda hijyen standardi.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Hastane ve Saglik Kurumu Temizligi', description: 'Saglik mevzuatina uygun, disiplinli ve sterilizasyon destekli temizlik.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Ofis Temizligi', description: 'Verimli calisma alanlari icin gunluk ve periyodik ofis bakimi.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'AVM ve Magaza Temizligi', description: 'Musteri deneyimini guclendiren vitrin ve ortak alan temizligi.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Fabrika ve Sanayi Temizligi', description: 'Uretim alanlarina uygun ekipmanlarla derinlemesine endustriyel temizlik.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Insaat Sonrasi Temizlik', description: 'Teslim oncesi detayli kaba ve ince temizlik sureclerinin yonetimi.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Oteller ve Konaklama Temizligi', description: 'Misafir memnuniyeti odakli oda, lobi ve ortak alan hizmetleri.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Restoran ve Kafe Temizligi', description: 'Servis ve mutfak alanlarinda hijyen ve denetim odakli calisma.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
+  { title: 'Yat Temizligi', description: 'Yat ve marina alanlarinda premium detay temizlik hizmeti.', buttonLabel: 'Detay', to: '/temizlik-hizmetleri' },
 ]
 
 const b2cServices: ServiceItem[] = [
-  { title: 'Ev / Hane Temizligi', description: 'Yasam alanlari icin guvenilir ve duzenli periyodik temizlik.', buttonLabel: 'Detay ve bolgeler' },
-  { title: 'Daire Temizligi', description: 'Tasima oncesi veya sonrasi kapsamli daire temizligi.', buttonLabel: 'Detay ve bolgeler' },
-  { title: 'Apartman Temizligi', description: 'Merdiven, giris, asansor ve ortak alanlarda surekli hijyen.', buttonLabel: 'Detay ve bolgeler' },
-  { title: 'Villa Temizligi', description: 'Genis yasam alanlarina ozel planli ve detayli temizlik.', buttonLabel: 'Detay ve bolgeler' },
+  { title: 'Ev / Hane Temizligi', description: 'Yasam alanlari icin guvenilir ve duzenli periyodik temizlik.', buttonLabel: 'Detay ve bolgeler', to: '/temizlik-hizmetleri' },
+  { title: 'Daire Temizligi', description: 'Tasima oncesi veya sonrasi kapsamli daire temizligi.', buttonLabel: 'Detay ve bolgeler', to: '/temizlik-hizmetleri' },
+  { title: 'Apartman Temizligi', description: 'Merdiven, giris, asansor ve ortak alanlarda surekli hijyen.', buttonLabel: 'Detay ve bolgeler', to: '/temizlik-hizmetleri' },
+  { title: 'Villa Temizligi', description: 'Genis yasam alanlarina ozel planli ve detayli temizlik.', buttonLabel: 'Detay ve bolgeler', to: '/temizlik-hizmetleri' },
 ]
 
 function ServiceCard({ item }: { item: ServiceItem }) {
@@ -35,13 +37,13 @@ function ServiceCard({ item }: { item: ServiceItem }) {
     <article className="group rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
       <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
-      {item.buttonLabel && (
-        <button
-          type="button"
-          className="mt-5 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors group-hover:border-navy/20 hover:bg-slate-50"
+      {item.buttonLabel && item.to && (
+        <Link
+          to={item.to}
+          className="mt-5 inline-flex rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors group-hover:border-navy/20 hover:bg-slate-50"
         >
           {item.buttonLabel}
-        </button>
+        </Link>
       )}
     </article>
   )
@@ -158,7 +160,7 @@ function Services() {
       </div>
       <div className="mx-auto mt-14 flex max-w-7xl items-center gap-2 px-4 text-sm font-medium text-slate-500 sm:px-6 lg:px-8">
         <Sparkles size={16} className="text-gold" />
-        Tum hizmetler statik tanitim amacli sunulmustur.
+        Izmir genelinde kurumsal ve bireysel temizlik ihtiyaclari icin kesif ve teklif destegi sunuyoruz.
       </div>
     </SectionReveal>
   )

@@ -1,4 +1,5 @@
 import { Award, Shield, TrendingUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import SectionReveal from './SectionReveal'
 
 const pillars = [
@@ -25,10 +26,20 @@ function About() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Hakkimizda</h2>
         <p className="mt-5 max-w-3xl leading-relaxed text-slate-600">
-          Regulus Temizlik &amp; Insaat, kurumlarin ve bireylerin ihtiyaclarina ozel temizlik ve insaat yonetimi
-          cozumleri sunar. Is sureclerimizde guven, kalite ve surdurulebilirlik ilkelerini esas alir; her projede
-          olculebilir performans ve yuksek memnuniyet hedefleriz.
+          Regulus Temizlik &amp; Insaat, Izmir merkezli profesyonel temizlik ve insaat proje yonetimi hizmetleri sunar.
+          Kurumsal isletmelerden bireysel musteri taleplerine kadar her projede kalite, guven ve sureklilik odakli
+          operasyon modeli ile calisir.
         </p>
+        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200">
+          <div className="relative h-44 sm:h-56">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+              alt="Regulus ekip ve operasyon yonetimi"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/35 to-transparent" />
+          </div>
+        </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {pillars.map((pillar) => {
@@ -43,6 +54,14 @@ function About() {
               </article>
             )
           })}
+        </div>
+        <div className="mt-8">
+          <Link
+            to="/hakkimizda"
+            className="inline-flex rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+          >
+            Hakkimizda Sayfasina Git
+          </Link>
         </div>
       </div>
     </SectionReveal>

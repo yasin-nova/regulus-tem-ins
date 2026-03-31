@@ -29,9 +29,20 @@ function ConstructionServicesPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Insaat Hizmetleri</h1>
         <p className="mt-5 max-w-3xl text-slate-600">
-          Insaat projelerinde isveren adina planlama, koordinasyon ve uygulama takibini bir arada yurutuyoruz.
-          Amacimiz, projenin kalite hedeflerinden sapmadan zamaninda ve kontrollu sekilde tamamlanmasi.
+          Insaat hizmetleri alaninda proje planlama, saha koordinasyonu, maliyet kontrolu ve kalite takibini tek
+          merkezden yonetiyoruz. Hedefimiz; projeleri teknik standartlara uygun, zamaninda ve kontrollu sekilde
+          tamamlamaktir.
         </p>
+        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200">
+          <div className="relative h-52 sm:h-64">
+            <img
+              src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80"
+              alt="Insaat proje yonetimi"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent" />
+          </div>
+        </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {constructionServices.map((service) => {
