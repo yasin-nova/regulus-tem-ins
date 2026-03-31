@@ -1,4 +1,5 @@
 import { ClipboardCheck, HardHat, ShieldCheck, Timer } from 'lucide-react'
+import SeoMeta from '../components/SeoMeta'
 
 const constructionServices = [
   {
@@ -52,6 +53,22 @@ const constructionGallery = [
 function ConstructionServicesPage() {
   return (
     <section className="py-24">
+      <SeoMeta
+        title="Izmir Insaat Hizmetleri ve Proje Yonetimi | Regulus"
+        description="Izmir insaat hizmetleri, proje planlama, saha koordinasyonu, maliyet ve kalite kontrolu. Regulus ile projelerinizi zamaninda ve kontrollu yonetin."
+        path="/insaat-hizmetleri"
+        keywords="izmir insaat hizmetleri, izmir proje yonetimi, insaat saha yonetimi izmir, maliyet kontrolu insaat"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          serviceType: 'Insaat Hizmetleri ve Proje Yonetimi',
+          areaServed: 'Izmir',
+          provider: {
+            '@type': 'LocalBusiness',
+            name: 'Regulus Temizlik - Insaat',
+          },
+        }}
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Insaat Hizmetleri</h1>
         <p className="mt-5 max-w-3xl text-slate-600">

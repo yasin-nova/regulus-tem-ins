@@ -1,4 +1,5 @@
 import { CheckCircle2, Sparkles } from 'lucide-react'
+import SeoMeta from '../components/SeoMeta'
 
 const serviceGroups = [
   {
@@ -55,6 +56,22 @@ const cleaningGallery = [
 function CleaningServicesPage() {
   return (
     <section className="py-24">
+      <SeoMeta
+        title="Izmir Temizlik Hizmetleri | Kurumsal ve Bireysel Cozumler"
+        description="Izmir temizlik hizmetleri: ofis, apartman, villa, insaat sonrasi temizlik ve kurumsal hijyen cozumleri. Regulus ile detayli, planli ve profesyonel hizmet."
+        path="/temizlik-hizmetleri"
+        keywords="izmir temizlik hizmetleri, ofis temizligi izmir, apartman temizligi izmir, insaat sonrasi temizlik izmir, kurumsal temizlik"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          serviceType: 'Temizlik Hizmetleri',
+          areaServed: 'Izmir',
+          provider: {
+            '@type': 'LocalBusiness',
+            name: 'Regulus Temizlik - Insaat',
+          },
+        }}
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600">
           <Sparkles size={16} className="text-gold" />

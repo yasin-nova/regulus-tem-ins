@@ -32,7 +32,7 @@ function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <NavLink to="/" className="shrink-0" onClick={() => setIsOpen(false)}>
-          <BrandLogo alt="Regulus Temizlik ve Insaat logosu" className="h-12 w-32 sm:h-14 sm:w-36" animateOnLoad />
+          <BrandLogo alt="Regulus Temizlik ve Insaat logosu" className="h-16 w-44 sm:h-20 sm:w-56" animateOnLoad />
         </NavLink>
 
         <button

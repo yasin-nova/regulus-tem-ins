@@ -1,4 +1,5 @@
 import { Award, Shield, Users } from 'lucide-react'
+import SeoMeta from '../components/SeoMeta'
 
 const values = [
   {
@@ -34,6 +35,12 @@ const aboutGallery = [
 function AboutPage() {
   return (
     <section className="py-24">
+      <SeoMeta
+        title="Hakkimizda | Izmir Temizlik ve Insaat Firmasi Regulus"
+        description="Regulus Temizlik - Insaat, Izmir merkezli kurumsal temizlik, bireysel temizlik ve insaat proje yonetimi alaninda guvenilir hizmet sunar."
+        path="/hakkimizda"
+        keywords="izmir temizlik firmasi, izmir insaat firmasi, hakkimizda regulus, profesyonel temizlik izmir"
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Hakkimizda</h1>
         <p className="mt-5 max-w-3xl leading-relaxed text-slate-600">

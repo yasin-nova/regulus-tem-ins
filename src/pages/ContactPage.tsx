@@ -1,8 +1,15 @@
 import Contact from '../components/Contact'
+import SeoMeta from '../components/SeoMeta'
 
 function ContactPage() {
   return (
     <>
+      <SeoMeta
+        title="Iletisim | Izmir Temizlik ve Insaat Teklif Al"
+        description="Izmir temizlik ve insaat hizmetleri icin Regulus ile iletisime gecin. Hizli geri donus, yerinde kesif ve seffaf tekliflendirme."
+        path="/iletisim"
+        keywords="izmir temizlik iletisim, izmir insaat teklif, temizlik fiyat teklifi izmir, regulus iletisim"
+      />
       <section className="pt-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-2xl border border-slate-200">
