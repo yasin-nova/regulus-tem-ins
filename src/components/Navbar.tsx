@@ -25,7 +25,9 @@ function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'border-b border-slate-200/80 bg-white/88 shadow-soft backdrop-blur-xl' : 'bg-transparent'
+        isScrolled
+          ? 'border-b border-[#dbe7f4] bg-navbar-premium/95 shadow-soft backdrop-blur-xl'
+          : 'border-b border-transparent bg-navbar-premium/70 backdrop-blur-lg'
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -36,13 +38,13 @@ function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}
-          className="rounded-lg border border-slate-200/90 bg-white/90 p-2 text-brand-navy transition hover:bg-slate-50 md:hidden"
+          className="rounded-lg border border-[#d6e4f3] bg-white/85 p-2 text-brand-navy transition hover:bg-white md:hidden"
           aria-label="Menuyu ac veya kapat"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <ul className="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
+        <ul className="hidden items-center gap-7 text-sm font-medium text-slate-700 md:flex">
           {menuItems.map((item) => (
             <li key={item.to}>
               <NavLink
@@ -64,7 +66,7 @@ function Navbar() {
       </nav>
 
       {isOpen && (
-        <ul className="space-y-2 border-t border-slate-100 bg-white/95 px-4 py-3 text-sm font-medium text-slate-700 md:hidden">
+        <ul className="space-y-2 border-t border-[#dbe7f4] bg-navbar-premium/95 px-4 py-3 text-sm font-medium text-slate-700 backdrop-blur-lg md:hidden">
           {menuItems.map((item) => (
             <li key={item.to}>
               <NavLink
