@@ -1,6 +1,6 @@
 import { ArrowRight, Building2, CheckCircle2, ClipboardCheck, Sparkles } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useMemo, useState } from 'react'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import { useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import BrandLogo from './BrandLogo'
 import SectionReveal from './SectionReveal'
@@ -47,6 +47,7 @@ const heroContent: Record<
 }
 
 function Hero() {
+  const heroRef = useRef<HTMLElement | null>(null)
   const [activeTab, setActiveTab] = useState<HeroTab>('temizlik')
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
@@ -79,6 +80,12 @@ function Hero() {
     phone ? `Telefon numaram: ${phone}. ` : ''
   }${serviceType} hizmeti ile alakali bilgi almak istiyorum.`
   const whatsappUrl = `https://wa.me/905355271254?text=${encodeURIComponent(whatsappText)}`
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start end', 'end start'],
+  })
+  const blobYTop = useTransform(scrollYProgress, [0, 1], [0, -28])
+  const blobYBottom = useTransform(scrollYProgress, [0, 1], [0, 32])
 
   return (
     <SectionReveal id="ana-sayfa" className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8">
@@ -182,7 +189,7 @@ function Hero() {
             </button>
           </div>
 
-          <div className="mt-6 grid items-stretch gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+          <div ref={heroRef} className="mt-6 grid items-stretch gap-5 lg:grid-cols-[1.1fr_0.9fr]">
             <AnimatePresence mode="wait">
               <motion.article
                 key={`content-${activeTab}`}
@@ -236,8 +243,18 @@ function Hero() {
               >
               <img src={current.visualImage} alt={current.visualLabel} className="absolute inset-0 h-full w-full object-cover opacity-35" />
               <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/85 via-navy/70 to-slate-900/55" />
-              <div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-gold/20 blur-2xl" />
-              <div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-navy/50 blur-3xl" />
+              <motion.div
+                className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-gold/20 blur-2xl"
+                style={{ y: blobYTop }}
+                animate={{ scale: [1, 1.04, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-navy/50 blur-3xl"
+                style={{ y: blobYBottom }}
+                animate={{ scale: [1, 1.06, 1] }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+              />
               <div className="relative z-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-300">One Cikan Hizmet</p>
                 <p className="mt-3 text-3xl font-semibold sm:text-4xl">{current.visualLabel}</p>

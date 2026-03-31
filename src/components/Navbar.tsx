@@ -1,4 +1,6 @@
 import { Menu, X } from 'lucide-react'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
+import type { MouseEvent } from 'react'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import BrandLogo from './BrandLogo'
@@ -14,6 +16,10 @@ const menuItems = [
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const ctaX = useMotionValue(0)
+  const ctaY = useMotionValue(0)
+  const springX = useSpring(ctaX, { stiffness: 220, damping: 18, mass: 0.35 })
+  const springY = useSpring(ctaY, { stiffness: 220, damping: 18, mass: 0.35 })
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24)
@@ -21,6 +27,19 @@ function Navbar() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const handleCtaMove = (event: MouseEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect()
+    const offsetX = (event.clientX - bounds.left - bounds.width / 2) * 0.12
+    const offsetY = (event.clientY - bounds.top - bounds.height / 2) * 0.12
+    ctaX.set(Math.max(-5, Math.min(5, offsetX)))
+    ctaY.set(Math.max(-5, Math.min(5, offsetY)))
+  }
+
+  const handleCtaLeave = () => {
+    ctaX.set(0)
+    ctaY.set(0)
+  }
 
   return (
     <header
@@ -58,9 +77,17 @@ function Navbar() {
             </li>
           ))}
           <li>
-            <NavLink to="/iletisim" className="btn-primary px-4 py-2 text-xs">
-              Teklif Al
-            </NavLink>
+            <motion.div
+              style={{ x: springX, y: springY }}
+              onMouseMove={handleCtaMove}
+              onMouseLeave={handleCtaLeave}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <NavLink to="/iletisim" className="btn-primary px-4 py-2 text-xs">
+                Teklif Al
+              </NavLink>
+            </motion.div>
           </li>
         </ul>
       </nav>

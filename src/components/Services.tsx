@@ -34,7 +34,12 @@ const b2cServices: ServiceItem[] = [
 
 function ServiceCard({ item }: { item: ServiceItem }) {
   return (
-    <article className="group rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+    <motion.article
+      whileHover={{ y: -5, rotateX: 2, rotateY: -1.5 }}
+      transition={{ duration: 0.28, ease: 'easeOut' }}
+      className="group rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:border-slate-300 hover:shadow-[0_16px_40px_rgba(15,23,42,0.08)] [transform-style:preserve-3d]"
+      style={{ perspective: 900 }}
+    >
       <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.description}</p>
       {item.buttonLabel && item.to && (
@@ -45,7 +50,7 @@ function ServiceCard({ item }: { item: ServiceItem }) {
           {item.buttonLabel}
         </Link>
       )}
-    </article>
+    </motion.article>
   )
 }
 
