@@ -1,4 +1,5 @@
 import { ArrowRight, Building2, CheckCircle2, ClipboardCheck, Sparkles } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../assets/logo-regulus.svg'
@@ -82,7 +83,13 @@ function Hero() {
   return (
     <SectionReveal id="ana-sayfa" className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8">
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
-        <div className="border-b border-slate-100 bg-slate-900 p-4 sm:p-5">
+        <motion.div
+          className="border-b border-slate-100 bg-slate-900 p-4 sm:p-5"
+          initial={{ opacity: 0, y: -12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.45 }}
+        >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-300">Hizli Iletisim</p>
           <div className="grid gap-3 md:grid-cols-[1fr_1fr_1.2fr_auto]">
             <input
@@ -110,11 +117,13 @@ function Hero() {
                 </option>
               ))}
             </select>
-            <a
+            <motion.a
               href={isNameValid ? whatsappUrl : undefined}
               target="_blank"
               rel="noreferrer"
               aria-disabled={!isNameValid}
+              whileHover={isNameValid ? { scale: 1.03 } : undefined}
+              whileTap={isNameValid ? { scale: 0.98 } : undefined}
               className={`inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-colors ${
                 isNameValid
                   ? 'bg-gold text-slate-900 hover:bg-[#f7cf63]'
@@ -122,10 +131,10 @@ function Hero() {
               }`}
             >
               Iletisime Gec
-            </a>
+            </motion.a>
           </div>
           {!isNameValid && <p className="mt-2 text-xs text-red-200">Lutfen devam etmek icin Ad Soyad giriniz.</p>}
-        </div>
+        </motion.div>
 
         <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-5 sm:p-7">
           <img src={logo} alt="Regulus logo" className="mb-5 h-14 w-auto rounded-lg border border-slate-100 bg-white px-2 py-1" />
@@ -174,7 +183,15 @@ function Hero() {
           </div>
 
           <div className="mt-6 grid items-stretch gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7">
+            <AnimatePresence mode="wait">
+              <motion.article
+                key={`content-${activeTab}`}
+                className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
               <p className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
                 <Sparkles size={14} className="text-gold" />
                 {current.stat}
@@ -205,9 +222,18 @@ function Hero() {
                   Iletisim Sayfasi
                 </Link>
               </div>
-            </article>
+              </motion.article>
+            </AnimatePresence>
 
-            <article className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 p-5 text-white sm:p-7">
+            <AnimatePresence mode="wait">
+              <motion.article
+                key={`visual-${activeTab}`}
+                className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 p-5 text-white sm:p-7"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.32, ease: 'easeOut' }}
+              >
               <img src={current.visualImage} alt={current.visualLabel} className="absolute inset-0 h-full w-full object-cover opacity-35" />
               <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/85 via-navy/70 to-slate-900/55" />
               <div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-gold/20 blur-2xl" />
@@ -227,7 +253,8 @@ function Hero() {
                   </div>
                 </div>
               </div>
-            </article>
+              </motion.article>
+            </AnimatePresence>
           </div>
         </div>
       </div>

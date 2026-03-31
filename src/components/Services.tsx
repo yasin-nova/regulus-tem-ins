@@ -1,4 +1,5 @@
 import { Building2, Home, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SectionReveal from './SectionReveal'
 
@@ -59,7 +60,13 @@ function Services() {
           </p>
           <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Kurumsal Cozumler</h2>
         </div>
-        <div className="mb-7 overflow-hidden rounded-2xl border border-slate-200">
+        <motion.div
+          className="mb-7 overflow-hidden rounded-2xl border border-slate-200"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
+        >
           <div className="relative h-44 sm:h-52">
             <img
               src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80"
@@ -71,12 +78,19 @@ function Services() {
               Kurumsal alanlarda guvenilir ve denetlenebilir temizlik
             </p>
           </div>
-        </div>
+        </motion.div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {b2bServices.map((item, index) => (
-            <div key={item.title} className={index >= 3 && !showAllB2B ? 'hidden sm:block' : ''}>
+            <motion.div
+              key={item.title}
+              className={index >= 3 && !showAllB2B ? 'hidden sm:block' : ''}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.25) }}
+            >
               <ServiceCard item={item} />
-            </div>
+            </motion.div>
           ))}
         </div>
         {b2bServices.length > 3 && (
@@ -97,7 +111,13 @@ function Services() {
           </p>
           <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Yasam Alanlari Hizmetleri</h2>
         </div>
-        <div className="mb-7 overflow-hidden rounded-2xl border border-slate-200">
+        <motion.div
+          className="mb-7 overflow-hidden rounded-2xl border border-slate-200"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
+        >
           <div className="relative h-44 sm:h-52">
             <img
               src="https://images.unsplash.com/photo-1520038410233-7141be7e6f97?auto=format&fit=crop&w=1400&q=80"
@@ -109,12 +129,19 @@ function Services() {
               Ev ve konutlar icin detayli, planli ve premium hizmet
             </p>
           </div>
-        </div>
+        </motion.div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {b2cServices.map((item, index) => (
-            <div key={item.title} className={index >= 3 && !showAllB2C ? 'hidden sm:block' : ''}>
+            <motion.div
+              key={item.title}
+              className={index >= 3 && !showAllB2C ? 'hidden sm:block' : ''}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.35, delay: Math.min(index * 0.05, 0.25) }}
+            >
               <ServiceCard item={item} />
-            </div>
+            </motion.div>
           ))}
         </div>
         {b2cServices.length > 3 && (

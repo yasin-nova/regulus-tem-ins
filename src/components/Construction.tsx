@@ -1,4 +1,5 @@
 import { BadgeCheck, ClipboardList, HardHat, ShieldCheck, Timer } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import SectionReveal from './SectionReveal'
 
@@ -16,7 +17,13 @@ function Construction() {
   return (
     <SectionReveal id="insaat" className="py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-5 lg:grid-cols-[1fr_0.9fr]">
+        <motion.div
+          className="grid items-center gap-5 lg:grid-cols-[1fr_0.9fr]"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45 }}
+        >
           <div>
             <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl">Insaat ve Proje Yonetimi Hizmetleri</h2>
             <p className="mt-6 max-w-3xl rounded-2xl border border-slate-200 bg-white p-5 text-slate-600">
@@ -31,23 +38,27 @@ function Construction() {
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/70 via-slate-900/35 to-transparent" />
           </div>
-        </div>
+        </motion.div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {constructionItems.map((item, index) => {
             const Icon = item.icon
             return (
-              <article
+              <motion.article
                 key={item.title}
                 className={`rounded-2xl border border-slate-200/80 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)] ${
                   index >= 3 && !showAllConstruction ? 'hidden sm:block' : ''
                 }`}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.35, delay: Math.min(index * 0.06, 0.25) }}
               >
                 <div className="mb-4 inline-flex rounded-xl bg-slate-100 p-3 text-navy">
                   <Icon size={20} />
                 </div>
                 <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              </article>
+              </motion.article>
             )
           })}
         </div>
