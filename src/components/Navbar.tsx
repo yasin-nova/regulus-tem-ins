@@ -1,5 +1,5 @@
 import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-regulus.svg'
 
@@ -13,18 +13,30 @@ const menuItems = [
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'border-b border-slate-200/80 bg-white/88 shadow-soft backdrop-blur-xl' : 'bg-transparent'
+      }`}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <NavLink to="/" className="shrink-0" onClick={() => setIsOpen(false)}>
-          <img src={logo} alt="Regulus Temizlik ve Insaat logosu" className="h-12 w-auto" />
+          <img src={logo} alt="Regulus Temizlik ve Insaat logosu" className="h-12 w-auto rounded-md" />
         </NavLink>
 
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}
-          className="rounded-lg border border-slate-200 p-2 text-navy transition hover:bg-slate-50 md:hidden"
+          className="rounded-lg border border-slate-200/90 bg-white/90 p-2 text-brand-navy transition hover:bg-slate-50 md:hidden"
           aria-label="Menuyu ac veya kapat"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -36,23 +48,28 @@ function Navbar() {
               <NavLink
                 to={item.to}
                 className={({ isActive }) =>
-                  `transition-colors duration-200 hover:text-navy ${isActive ? 'text-navy' : ''}`
+                  `transition-colors duration-200 hover:text-brand-navy ${isActive ? 'text-brand-navy' : ''}`
                 }
               >
                 {item.label}
               </NavLink>
             </li>
           ))}
+          <li>
+            <NavLink to="/iletisim" className="btn-primary px-4 py-2 text-xs">
+              Teklif Al
+            </NavLink>
+          </li>
         </ul>
       </nav>
 
       {isOpen && (
-        <ul className="space-y-2 border-t border-slate-100 px-4 py-3 text-sm font-medium text-slate-700 md:hidden">
+        <ul className="space-y-2 border-t border-slate-100 bg-white/95 px-4 py-3 text-sm font-medium text-slate-700 md:hidden">
           {menuItems.map((item) => (
             <li key={item.to}>
               <NavLink
                 to={item.to}
-                className="block rounded-lg px-3 py-2 transition hover:bg-slate-50"
+                className="block rounded-lg px-3 py-2 transition hover:bg-brand-sky/60"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}

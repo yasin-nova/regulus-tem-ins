@@ -210,14 +210,14 @@ function Hero() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link
                   to={current.ctaTo}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#254a73]"
+                  className="btn-primary gap-2"
                 >
                   {current.ctaLabel}
                   <ArrowRight size={18} />
                 </Link>
                 <Link
                   to="/iletisim"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50"
+                  className="btn-secondary gap-2"
                 >
                   Iletisim Sayfasi
                 </Link>

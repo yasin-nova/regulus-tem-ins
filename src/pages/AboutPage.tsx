@@ -18,6 +18,19 @@ const values = [
   },
 ]
 
+const milestones = [
+  'Ihtiyaca ozel hizmet planlamasi',
+  'Sahada standart operasyon disiplini',
+  'Duzenli kalite kontrol ve raporlama',
+  'Uzun vadeli musteri memnuniyeti odagi',
+]
+
+const aboutGallery = [
+  'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80',
+]
+
 function AboutPage() {
   return (
     <section className="py-24">
@@ -42,6 +55,13 @@ function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-transparent" />
           </div>
         </div>
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {aboutGallery.map((image, index) => (
+            <div key={image} className="overflow-hidden rounded-xl border border-slate-200">
+              <img src={image} alt={`Kurumsal ekip gorseli ${index + 1}`} className="h-40 w-full object-cover" />
+            </div>
+          ))}
+        </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {values.map((value) => {
@@ -56,6 +76,47 @@ function AboutPage() {
               </article>
             )
           })}
+        </div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="text-2xl font-semibold text-slate-900">Calisma Ilkemiz</h2>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              Her projede once ihtiyaci dogru analiz eder, ardindan isin kapsamina uygun kaynak planlamasi yapariz.
+              Uygulama surecinde kaliteyi duzenli denetler, operasyonu musteri beklentisine gore surekli
+              iyilestiririz.
+            </p>
+            <ul className="mt-5 space-y-3">
+              {milestones.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-slate-600">
+                  <Shield size={18} className="mt-0.5 shrink-0 text-navy" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-100">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80"
+                alt="Ekip koordinasyonu"
+                className="h-44 w-full object-cover"
+              />
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="text-2xl font-semibold text-slate-900">Sektor Tecrubemiz</h2>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              Kurumsal tesislerden bireysel yasam alanlarina kadar farkli olcekte projelerde edindigimiz saha tecrubesi
+              sayesinde, her iste hizli uyum ve dogru cozum uretme kabiliyetine sahibiz.
+            </p>
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-100">
+              <img
+                src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=80"
+                alt="Kurumsal hizmet yaklasimi"
+                className="h-44 w-full object-cover"
+              />
+            </div>
+          </article>
         </div>
       </div>
     </section>

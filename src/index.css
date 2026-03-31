@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
 html {
   scroll-behavior: smooth;
 }
@@ -10,11 +12,38 @@ body {
   margin: 0;
   font-family: Inter, Segoe UI, system-ui, sans-serif;
   color: #0f172a;
-  background: #f8fafc;
+  background: linear-gradient(135deg, #eaf3ff 0%, #ffffff 45%, #f7fbff 100%);
 }
 
 #root {
   min-height: 100vh;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: 'Playfair Display', ui-serif, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-navy shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-goldSoft hover:shadow-premium;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-brand-navy/20 bg-white px-6 py-3 text-sm font-semibold text-brand-navy transition-colors duration-300 hover:bg-brand-sky/35;
+  }
+
+  .card-premium {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-premium;
+  }
+
+  .badge-premium {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-navy/10 bg-white px-4 py-2 text-xs font-medium text-brand-navy;
+  }
 }
 
 .reveal {
