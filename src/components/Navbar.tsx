@@ -1,7 +1,7 @@
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from '../assets/logo-regulus.svg'
+import BrandLogo from './BrandLogo'
 
 const menuItems = [
   { label: 'Anasayfa', to: '/' },
@@ -30,7 +30,7 @@ function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <NavLink to="/" className="shrink-0" onClick={() => setIsOpen(false)}>
-          <img src={logo} alt="Regulus Temizlik ve Insaat logosu" className="h-12 w-auto rounded-md" />
+          <BrandLogo alt="Regulus Temizlik ve Insaat logosu" className="h-12 w-32 sm:h-14 sm:w-36" animateOnLoad />
         </NavLink>
 
         <button

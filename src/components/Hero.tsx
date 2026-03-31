@@ -2,7 +2,7 @@ import { ArrowRight, Building2, CheckCircle2, ClipboardCheck, Sparkles } from 'l
 import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo-regulus.svg'
+import BrandLogo from './BrandLogo'
 import SectionReveal from './SectionReveal'
 
 type HeroTab = 'temizlik' | 'insaat'
@@ -137,7 +137,7 @@ function Hero() {
         </motion.div>
 
         <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-5 sm:p-7">
-          <img src={logo} alt="Regulus logo" className="mb-5 h-14 w-auto rounded-lg border border-slate-100 bg-white px-2 py-1" />
+          <BrandLogo alt="Regulus logo" className="mb-5 h-14 w-36 border border-slate-100 bg-white px-2 py-1" animateOnLoad />
           <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 sm:text-sm">
             <ClipboardCheck size={15} className="text-navy" />
             Izmir temizlik ve insaat hizmetlerinde uzman ekip

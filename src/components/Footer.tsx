@@ -1,6 +1,6 @@
 import { Globe, Mail, PhoneCall } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../assets/logo-regulus.svg'
+import BrandLogo from './BrandLogo'
 
 const links = [
   { label: 'Anasayfa', to: '/' },
@@ -16,7 +16,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <Link to="/">
-            <img src={logo} alt="Regulus logo" className="h-14 w-auto" />
+            <BrandLogo alt="Regulus logo" className="h-14 w-36" />
           </Link>
           <p className="mt-4 max-w-sm text-sm text-slate-600">
             Regulus Temizlik &amp; Insaat, kurumsal ve bireysel hizmetlerde premium kalite ve guvenilir operasyon
