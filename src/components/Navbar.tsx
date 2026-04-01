@@ -8,9 +8,9 @@ import BrandLogo from './BrandLogo'
 const menuItems = [
   { label: 'Anasayfa', to: '/' },
   { label: 'Temizlik Hizmetleri', to: '/temizlik-hizmetleri' },
-  { label: 'Insaat Hizmetleri', to: '/insaat-hizmetleri' },
-  { label: 'Hakkimizda', to: '/hakkimizda' },
-  { label: 'Iletisim', to: '/iletisim' },
+  { label: 'İnşaat Hizmetleri', to: '/insaat-hizmetleri' },
+  { label: 'Hakkımızda', to: '/hakkimizda' },
+  { label: 'İletişim', to: '/iletisim' },
 ]
 
 function Navbar() {
@@ -51,14 +51,14 @@ function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <NavLink to="/" className="shrink-0" onClick={() => setIsOpen(false)}>
-          <BrandLogo alt="Regulus Temizlik ve Insaat logosu" className="h-20 w-56 sm:h-24 sm:w-72" animateOnLoad />
+          <BrandLogo alt="Regulus Temizlik ve İnşaat logosu" className="h-20 w-56 sm:h-24 sm:w-72" animateOnLoad />
         </NavLink>
 
         <button
           type="button"
           onClick={() => setIsOpen((value) => !value)}
           className="rounded-lg border border-[#d6e4f3] bg-white/85 p-2 text-brand-navy transition hover:bg-white md:hidden"
-          aria-label="Menuyu ac veya kapat"
+          aria-label="Menüyü aç veya kapat"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>

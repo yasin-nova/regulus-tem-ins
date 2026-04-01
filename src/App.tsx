@@ -18,8 +18,8 @@ function App() {
       <Navbar />
       <main className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(circle_at_top,rgba(15,42,82,0.11),transparent_55%)]" />
-        <div className="pointer-events-none absolute right-0 top-[360px] -z-10 h-56 w-56 rounded-full bg-brand-gold/20 blur-3xl" />
-        <div className="pointer-events-none absolute -left-10 top-[560px] -z-10 h-64 w-64 rounded-full bg-[#b9d8ff]/30 blur-3xl" />
+        <div className="pointer-events-none absolute right-0 top-[360px] -z-10 h-56 w-56 rounded-full bg-[#9ec7ff]/30 blur-3xl" />
+        <div className="pointer-events-none absolute -left-10 top-[560px] -z-10 h-64 w-64 rounded-full bg-[#b9d8ff]/36 blur-3xl" />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/anasayfa" element={<HomePage />} />

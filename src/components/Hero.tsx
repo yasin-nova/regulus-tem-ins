@@ -21,12 +21,12 @@ const heroContent: Record<
   }
 > = {
   temizlik: {
-    title: 'Izmir profesyonel temizlik hizmetlerinde guvenilir cozum ortagi',
+    title: 'İzmir profesyonel temizlik hizmetlerinde güvenilir çözüm ortağı',
     description:
-      'Ofis, hastane, okul, site ve yasam alanlari icin ihtiyaca ozel temizlik planlari hazirliyor; hijyen, duzen ve sureklilik odakli hizmet sunuyoruz.',
-    points: ['Kuruma ve mekana ozel operasyon plani', 'Egitimli ekip ve kalite kontrol sureci', 'Periyodik, gunluk ve detayli temizlik secenekleri'],
-    stat: 'Izmir temizlik firmasi',
-    ctaLabel: 'Temizlik Hizmetlerini Gor',
+      'Ofis, hastane, okul, site ve yaşam alanları için ihtiyaca özel temizlik planları hazırlıyor; hijyen, düzen ve süreklilik odaklı hizmet sunuyoruz.',
+    points: ['Kuruma ve mekana özel operasyon planı', 'Eğitimli ekip ve kalite kontrol süreci', 'Periyodik, günlük ve detaylı temizlik seçenekleri'],
+    stat: 'İzmir temizlik firması',
+    ctaLabel: 'Temizlik Hizmetlerini Gör',
     ctaTo: '/temizlik-hizmetleri',
     visualLabel: 'Temizlik Hizmetleri',
     visualImage:
@@ -35,12 +35,12 @@ const heroContent: Record<
       'https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?auto=format&fit=crop&w=1000&q=80',
   },
   insaat: {
-    title: 'Insaat ve proje yonetiminde zamaninda, kontrollu ve kaliteli teslim',
+    title: 'İnşaat ve proje yönetiminde zamanında, kontrollü ve kaliteli teslim',
     description:
-      'Konut, ticari ve kurumsal projelerde planlama, saha yonetimi ve kalite denetimini bir arada yurutarak sureci basindan sonuna kadar takip ediyoruz.',
-    points: ['Proje planlama ve uygulama koordinasyonu', 'Maliyet, zaman ve is programi takibi', 'Risk, kalite ve is guvenligi odakli yonetim'],
-    stat: 'Insaat proje yonetimi',
-    ctaLabel: 'Insaat Hizmetlerini Gor',
+      'Konut, ticari ve kurumsal projelerde planlama, saha yönetimi ve kalite denetimini bir arada yürüterek süreci başından sonuna kadar takip ediyoruz.',
+    points: ['Proje planlama ve uygulama koordinasyonu', 'Maliyet, zaman ve iş programı takibi', 'Risk, kalite ve iş güvenliği odaklı yönetim'],
+    stat: 'İnşaat proje yönetimi',
+    ctaLabel: 'İnşaat Hizmetlerini Gör',
     ctaTo: '/insaat-hizmetleri',
     visualLabel: 'Insaat Hizmetleri',
     visualImage:
@@ -53,18 +53,18 @@ const heroContent: Record<
 const heroSlides = [
   {
     image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1800&q=80',
-    title: 'Kurumsal Temizlikte Guvenilir Operasyon',
-    description: 'Ofis, hastane, okul ve ticari alanlarda planli, denetlenebilir ve surdurulebilir temizlik hizmeti.',
+    title: 'Kurumsal Temizlikte Güvenilir Operasyon',
+    description: 'Ofis, hastane, okul ve ticari alanlarda planlı, denetlenebilir ve sürdürülebilir temizlik hizmeti.',
   },
   {
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80',
-    title: 'Insaat Projelerinde Zamaninda ve Kontrollu Teslim',
-    description: 'Planlama, saha koordinasyonu ve kalite takibi ile projeleri teknik standarda uygun yonetiyoruz.',
+    title: 'İnşaat Projelerinde Zamanında ve Kontrollü Teslim',
+    description: 'Planlama, saha koordinasyonu ve kalite takibi ile projeleri teknik standarda uygun yönetiyoruz.',
   },
   {
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1800&q=80',
-    title: 'Izmir Odakli Hizli Kesif ve Teklif Sureci',
-    description: 'Ihtiyaciniza uygun hizmet modelini netlestirip hizli geri donus ve seffaf fiyatlandirma sunuyoruz.',
+    title: 'İzmir Odaklı Hızlı Keşif ve Teklif Süreci',
+    description: 'İhtiyacınıza uygun hizmet modelini netleştirip hızlı geri dönüş ve şeffaf fiyatlandırma sunuyoruz.',
   },
 ]
 
@@ -74,44 +74,44 @@ function Hero() {
   const [mobileContactOpen, setMobileContactOpen] = useState(false)
   const [fullName, setFullName] = useState('')
   const [phone, setPhone] = useState('')
-  const [serviceType, setServiceType] = useState('Banka Temizligi')
+  const [serviceType, setServiceType] = useState('Banka Temizliği')
   const current = useMemo(() => heroContent[activeTab], [activeTab])
   const isNameValid = fullName.trim().length > 1
   const serviceOptions = [
     {
       category: 'Kurumsal',
       items: [
-        'Banka Temizligi',
-        'Belediye Temizligi',
-        'Okul ve Egitim Kurumu Temizligi',
-        'Hastane ve Saglik Kurumu Temizligi',
-        'Ofis Temizligi',
-        'AVM ve Magaza Temizligi',
-        'Fabrika ve Sanayi Temizligi',
-        'Insaat Sonrasi Temizlik',
-        'Oteller ve Konaklama Temizligi',
-        'Restoran ve Kafe Temizligi',
-        'Yat Temizligi',
+        'Banka Temizliği',
+        'Belediye Temizliği',
+        'Okul ve Eğitim Kurumu Temizliği',
+        'Hastane ve Sağlık Kurumu Temizliği',
+        'Ofis Temizliği',
+        'AVM ve Mağaza Temizliği',
+        'Fabrika ve Sanayi Temizliği',
+        'İnşaat Sonrası Temizlik',
+        'Oteller ve Konaklama Temizliği',
+        'Restoran ve Kafe Temizliği',
+        'Yat Temizliği',
       ],
     },
     {
       category: 'Hane',
-      items: ['Ev / Hane Temizligi', 'Daire Temizligi', 'Apartman Temizligi', 'Villa Temizligi'],
+      items: ['Ev / Hane Temizliği', 'Daire Temizliği', 'Apartman Temizliği', 'Villa Temizliği'],
     },
     {
-      category: 'Insaat Hizmeti',
+      category: 'İnşaat Hizmeti',
       items: [
-        'Proje ve Tasarim Yonetimi',
-        'Ihale ve Sozlesme Yonetimi',
-        'Zaman ve Maliyet Kontrolu',
-        'Yapim (Insaat) Yonetimi',
-        'Risk ve Kalite Yonetimi',
+        'Proje ve Tasarım Yönetimi',
+        'İhale ve Sözleşme Yönetimi',
+        'Zaman ve Maliyet Kontrolü',
+        'Yapım (İnşaat) Yönetimi',
+        'Risk ve Kalite Yönetimi',
       ],
     },
   ]
   const whatsappText = `Merhaba, ben ${fullName || 'ismini belirtmeyen bir musteri'}. ${
     phone ? `Telefon numaram: ${phone}. ` : ''
-  }${serviceType} hizmeti ile alakali bilgi almak istiyorum.`
+  }${serviceType} hizmeti ile alakalı bilgi almak istiyorum.`
   const whatsappUrl = `https://wa.me/905355271254?text=${encodeURIComponent(whatsappText)}`
 
   useEffect(() => {
@@ -219,14 +219,14 @@ function Hero() {
           </div>
           <p className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600 sm:text-sm">
             <ClipboardCheck size={15} className="text-navy" />
-            Izmir temizlik ve insaat hizmetlerinde uzman ekip
+            İzmir temizlik ve inşaat hizmetlerinde uzman ekip
           </p>
           <h1 className="mt-5 max-w-4xl text-3xl font-semibold leading-tight text-slate-900 sm:text-5xl">
-            Regulus Temizlik ve Insaat ile ihtiyaciniza uygun profesyonel hizmet
+            Regulus Temizlik ve İnşaat ile ihtiyacınıza uygun profesyonel hizmet
           </h1>
           <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-            Kurumsal ve bireysel tum hizmet taleplerinizde, hizli kesif, net fiyatlandirma ve duzenli operasyon
-            anlayisiyla yaninizdayiz.
+            Kurumsal ve bireysel tüm hizmet taleplerinizde, hızlı keşif, net fiyatlandırma ve düzenli operasyon
+            anlayışıyla yanınızdayız.
           </p>
         </div>
 
@@ -304,7 +304,7 @@ function Hero() {
                   to="/iletisim"
                   className="btn-secondary gap-2"
                 >
-                  Iletisim Sayfasi
+                  İletişim Sayfası
                 </Link>
               </div>
               </motion.article>
@@ -324,17 +324,17 @@ function Hero() {
               <motion.div className="absolute -left-12 -top-12 h-48 w-48 rounded-full bg-gold/20 blur-2xl" animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} />
               <motion.div className="absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-navy/50 blur-3xl" animate={{ scale: [1, 1.06, 1] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} />
               <div className="relative z-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-300">One Cikan Hizmet</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-300">Öne Çıkan Hizmet</p>
                 <p className="mt-3 text-3xl font-semibold sm:text-4xl">{current.visualLabel}</p>
                 <div className="mt-6 grid gap-3 text-sm sm:text-base">
                   <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    Hizli kesif ve teklif sureci ile ihtiyaca ozel planlama
+                    Hızlı keşif ve teklif süreci ile ihtiyaca özel planlama
                   </div>
                   <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    Egitimli ekipler ve duzenli saha denetimi ile yuksek hizmet kalitesi
+                    Eğitimli ekipler ve düzenli saha denetimi ile yüksek hizmet kalitesi
                   </div>
                   <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                    Kurumsal ve bireysel projelerde zamaninda ve guvenilir teslim
+                    Kurumsal ve bireysel projelerde zamanında ve güvenilir teslim
                   </div>
                 </div>
               </div>

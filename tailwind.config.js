@@ -32,7 +32,7 @@ export default {
         sans: ['Inter', 'Segoe UI', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'brand-gradient': 'linear-gradient(135deg, #EAF3FF 0%, #FFFFFF 45%, #F7FBFF 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #dfeeff 0%, #eaf4ff 42%, #d6e9ff 100%)',
         'navbar-premium': 'linear-gradient(90deg, #f5f9ff 0%, #eaf2fb 52%, #ffffff 100%)',
         'footer-premium': 'linear-gradient(135deg, #e3edf9 0%, #d6e6f7 55%, #c9dcf2 100%)',
         'glass-sheen': 'linear-gradient(120deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.35) 100%)',

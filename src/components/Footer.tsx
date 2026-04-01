@@ -5,9 +5,9 @@ import BrandLogo from './BrandLogo'
 const links = [
   { label: 'Anasayfa', to: '/' },
   { label: 'Temizlik Hizmetleri', to: '/temizlik-hizmetleri' },
-  { label: 'Insaat Hizmetleri', to: '/insaat-hizmetleri' },
-  { label: 'Hakkimizda', to: '/hakkimizda' },
-  { label: 'Iletisim', to: '/iletisim' },
+  { label: 'İnşaat Hizmetleri', to: '/insaat-hizmetleri' },
+  { label: 'Hakkımızda', to: '/hakkimizda' },
+  { label: 'İletişim', to: '/iletisim' },
 ]
 
 function Footer() {
@@ -20,13 +20,13 @@ function Footer() {
             <BrandLogo alt="Regulus logo" className="h-20 w-56 sm:h-24 sm:w-72" />
           </Link>
           <p className="mt-4 max-w-sm text-sm text-slate-700">
-            Regulus Temizlik &amp; Insaat, kurumsal ve bireysel hizmetlerde premium kalite ve guvenilir operasyon
-            anlayisini bir araya getirir.
+            Regulus Temizlik &amp; İnşaat, kurumsal ve bireysel hizmetlerde premium kalite ve güvenilir operasyon
+            anlayışını bir araya getirir.
           </p>
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold text-brand-navy">Menu</h3>
+          <h3 className="text-lg font-semibold text-brand-navy">Menü</h3>
           <ul className="mt-4 space-y-2 text-sm text-slate-700">
             {links.map((link) => (
               <li key={link.to}>
@@ -46,7 +46,7 @@ function Footer() {
                 key={index}
                 href="#"
                 className="rounded-xl border border-[#c9d9eb] bg-white/60 p-2 text-slate-700 transition-colors hover:border-[#b9cde3] hover:bg-white hover:text-brand-navy"
-                aria-label="Sosyal medya baglantisi"
+                aria-label="Sosyal medya bağlantısı"
               >
                 <Icon size={18} />
               </a>
@@ -55,7 +55,7 @@ function Footer() {
         </div>
       </div>
       <p className="relative mt-10 text-center text-xs text-slate-700/85">
-        © {new Date().getFullYear()} Regulus Temizlik &amp; Insaat. Tum haklari saklidir.
+        © {new Date().getFullYear()} Regulus Temizlik &amp; İnşaat. Tüm hakları saklıdır.
       </p>
     </footer>
   )
