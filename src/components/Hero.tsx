@@ -69,7 +69,7 @@ const heroSlides = [
 ]
 
 function Hero() {
-  const [activeTab, setActiveTab] = useState<HeroTab>('temizlik')
+  const [activeTab, setActiveTab] = useState<HeroTab>('insaat')
   const [activeSlide, setActiveSlide] = useState(0)
   const [mobileContactOpen, setMobileContactOpen] = useState(false)
   const [fullName, setFullName] = useState('')
@@ -136,10 +136,10 @@ function Hero() {
             onClick={() => setMobileContactOpen((prev) => !prev)}
             className="mb-3 flex w-full items-center justify-between rounded-xl border border-white/25 bg-white/15 px-4 py-3 text-left text-sm font-semibold text-white md:hidden"
           >
-            Bizimle Iletisime Gecin
+            Bizimle Iletişime Geçin
             <ChevronDown size={18} className={`transition-transform ${mobileContactOpen ? 'rotate-180' : ''}`} />
           </button>
-          <p className="mb-3 hidden text-xs font-semibold uppercase tracking-[0.12em] text-slate-300 md:block">Hizli Iletisim</p>
+          <p className="mb-3 hidden text-xs font-semibold uppercase tracking-[0.12em] text-slate-300 md:block">Hızlı İletişim</p>
           <div className={`grid gap-3 md:grid-cols-[1fr_1fr_1.2fr_auto] ${mobileContactOpen ? 'grid' : 'hidden md:grid'}`}>
             <input
               type="text"
@@ -183,10 +183,10 @@ function Hero() {
                   : 'cursor-not-allowed bg-slate-300 text-slate-600'
               }`}
             >
-              Iletisime Gec
+              İletişime Geç
             </motion.a>
           </div>
-          {!isNameValid && <p className={`mt-2 text-xs text-red-200 ${mobileContactOpen ? 'block' : 'hidden md:block'}`}>Lutfen devam etmek icin Ad Soyad giriniz.</p>}
+          {!isNameValid && <p className={`mt-2 text-xs text-red-200 ${mobileContactOpen ? 'block' : 'hidden md:block'}`}>Lütfen devam etmek için Ad Soyad giriniz.</p>}
         </motion.div>
 
         <div className="border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white p-5 sm:p-7">
@@ -232,9 +232,24 @@ function Hero() {
 
         <div className="p-5 sm:p-7">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500 sm:text-sm">
-            Hizmet Alani Secin
+            Hizmet Alanı Seçin
           </p>
           <div className="grid gap-3 sm:max-w-2xl sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => setActiveTab('insaat')}
+              className={`relative overflow-hidden rounded-2xl border p-4 text-left transition sm:p-5 ${
+                activeTab === 'insaat'
+                  ? 'border-brand-navy bg-brand-navy text-white shadow-[0_8px_24px_rgba(30,58,95,0.28)]'
+                  : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
+              }`}
+            >
+              <img src={heroContent.insaat.buttonImage} alt="İnşaat Hizmetleri" className="mb-3 h-20 w-full rounded-xl object-cover sm:h-24" />
+              <div className="inline-flex items-center gap-2 text-base font-semibold">
+                <Building2 size={18} />
+                İnşaat Hizmetleri
+              </div>
+            </button>
             <button
               type="button"
               onClick={() => setActiveTab('temizlik')}
@@ -248,21 +263,6 @@ function Hero() {
               <div className="inline-flex items-center gap-2 text-base font-semibold">
                 <Sparkles size={18} />
                 Temizlik Hizmetleri
-              </div>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('insaat')}
-              className={`relative overflow-hidden rounded-2xl border p-4 text-left transition sm:p-5 ${
-                activeTab === 'insaat'
-                  ? 'border-brand-navy bg-brand-navy text-white shadow-[0_8px_24px_rgba(30,58,95,0.28)]'
-                  : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
-              }`}
-            >
-              <img src={heroContent.insaat.buttonImage} alt="Insaat Hizmetleri" className="mb-3 h-20 w-full rounded-xl object-cover sm:h-24" />
-              <div className="inline-flex items-center gap-2 text-base font-semibold">
-                <Building2 size={18} />
-                Insaat Hizmetleri
               </div>
             </button>
           </div>
