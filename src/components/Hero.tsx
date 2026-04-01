@@ -78,26 +78,36 @@ function Hero() {
   const current = useMemo(() => heroContent[activeTab], [activeTab])
   const isNameValid = fullName.trim().length > 1
   const serviceOptions = [
-    'Banka Temizligi',
-    'Belediye Temizligi',
-    'Okul ve Egitim Kurumu Temizligi',
-    'Hastane ve Saglik Kurumu Temizligi',
-    'Ofis Temizligi',
-    'AVM ve Magaza Temizligi',
-    'Fabrika ve Sanayi Temizligi',
-    'Insaat Sonrasi Temizlik',
-    'Oteller ve Konaklama Temizligi',
-    'Restoran ve Kafe Temizligi',
-    'Yat Temizligi',
-    'Ev / Hane Temizligi',
-    'Daire Temizligi',
-    'Apartman Temizligi',
-    'Villa Temizligi',
-    'Proje ve Tasarim Yonetimi',
-    'Ihale ve Sozlesme Yonetimi',
-    'Zaman ve Maliyet Kontrolu',
-    'Yapim (Insaat) Yonetimi',
-    'Risk ve Kalite Yonetimi',
+    {
+      category: 'Kurumsal',
+      items: [
+        'Banka Temizligi',
+        'Belediye Temizligi',
+        'Okul ve Egitim Kurumu Temizligi',
+        'Hastane ve Saglik Kurumu Temizligi',
+        'Ofis Temizligi',
+        'AVM ve Magaza Temizligi',
+        'Fabrika ve Sanayi Temizligi',
+        'Insaat Sonrasi Temizlik',
+        'Oteller ve Konaklama Temizligi',
+        'Restoran ve Kafe Temizligi',
+        'Yat Temizligi',
+      ],
+    },
+    {
+      category: 'Hane',
+      items: ['Ev / Hane Temizligi', 'Daire Temizligi', 'Apartman Temizligi', 'Villa Temizligi'],
+    },
+    {
+      category: 'Insaat Hizmeti',
+      items: [
+        'Proje ve Tasarim Yonetimi',
+        'Ihale ve Sozlesme Yonetimi',
+        'Zaman ve Maliyet Kontrolu',
+        'Yapim (Insaat) Yonetimi',
+        'Risk ve Kalite Yonetimi',
+      ],
+    },
   ]
   const whatsappText = `Merhaba, ben ${fullName || 'ismini belirtmeyen bir musteri'}. ${
     phone ? `Telefon numaram: ${phone}. ` : ''
@@ -115,7 +125,7 @@ function Hero() {
     <SectionReveal id="ana-sayfa" className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8">
       <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_24px_60px_rgba(15,23,42,0.08)]">
         <motion.div
-          className="border-b border-slate-100 bg-slate-900 p-4 sm:p-5"
+          className="border-b border-slate-100 bg-gradient-to-r from-brand-navy to-[#294b78] p-4 sm:p-5"
           initial={{ opacity: 0, y: -12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -124,7 +134,7 @@ function Hero() {
           <button
             type="button"
             onClick={() => setMobileContactOpen((prev) => !prev)}
-            className="mb-3 flex w-full items-center justify-between rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-left text-sm font-semibold text-white md:hidden"
+            className="mb-3 flex w-full items-center justify-between rounded-xl border border-white/25 bg-white/15 px-4 py-3 text-left text-sm font-semibold text-white md:hidden"
           >
             Bizimle Iletisime Gecin
             <ChevronDown size={18} className={`transition-transform ${mobileContactOpen ? 'rotate-180' : ''}`} />
@@ -136,24 +146,28 @@ function Hero() {
               value={fullName}
               onChange={(event) => setFullName(event.target.value)}
               placeholder="Ad Soyad"
-              className="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300/80 outline-none transition focus:border-gold/60"
+              className="w-full rounded-xl border border-white/20 bg-white/15 px-4 py-3 text-sm text-white placeholder:text-slate-200/85 outline-none transition focus:border-gold/60"
             />
             <input
               type="tel"
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
               placeholder="Telefon"
-              className="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300/80 outline-none transition focus:border-gold/60"
+              className="w-full rounded-xl border border-white/20 bg-white/15 px-4 py-3 text-sm text-white placeholder:text-slate-200/85 outline-none transition focus:border-gold/60"
             />
             <select
               value={serviceType}
               onChange={(event) => setServiceType(event.target.value)}
-              className="w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white outline-none transition focus:border-gold/60"
+              className="w-full rounded-xl border border-white/20 bg-white/15 px-4 py-3 text-sm text-white outline-none transition focus:border-gold/60"
             >
-              {serviceOptions.map((option) => (
-                <option key={option} value={option} className="text-slate-900">
-                  {option}
-                </option>
+              {serviceOptions.map((group) => (
+                <optgroup key={group.category} label={group.category} className="text-slate-900">
+                  {group.items.map((option) => (
+                    <option key={option} value={option} className="text-slate-900">
+                      {option}
+                    </option>
+                  ))}
+                </optgroup>
               ))}
             </select>
             <motion.a
