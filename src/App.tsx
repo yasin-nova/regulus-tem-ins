@@ -1,6 +1,7 @@
 import Footer from './components/Footer'
 import FloatingActions from './components/FloatingActions'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/ScrollToTop'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AboutPage from './pages/AboutPage'
 import CleaningServicesPage from './pages/CleaningServicesPage'
@@ -11,6 +12,7 @@ import HomePage from './pages/HomePage'
 function App() {
   return (
     <div className="min-h-screen bg-brand-gradient">
+      <ScrollToTop />
       <Navbar />
       <main className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(circle_at_top,rgba(15,42,82,0.12),transparent_55%)]" />

@@ -17,7 +17,7 @@ function Footer() {
       <div className="relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
           <Link to="/">
-            <BrandLogo alt="Regulus logo" className="h-14 w-36" />
+            <BrandLogo alt="Regulus logo" className="h-20 w-56 sm:h-24 sm:w-72" />
           </Link>
           <p className="mt-4 max-w-sm text-sm text-slate-700">
             Regulus Temizlik &amp; Insaat, kurumsal ve bireysel hizmetlerde premium kalite ve guvenilir operasyon
